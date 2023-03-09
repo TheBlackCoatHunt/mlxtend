@@ -308,7 +308,7 @@ def paired_ttest_5x2cv(estimator1, estimator2, X, y, scoring="accuracy", random_
     first_diff = None
 
     def score_diff(X_1, X_2, y_1, y_2):
-        estimator1.fit(X_1, y_1)
+        estimator1.fit(X_1, y_1, max_epochs=25, patience=10, batch_size=300, virtual_batch_size=128)
         estimator2.fit(X_1, y_1)
         est1_score = scorer(estimator1, X_2, y_2)
         est2_score = scorer(estimator2, X_2, y_2)
