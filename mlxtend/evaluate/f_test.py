@@ -114,7 +114,7 @@ def ftest(y_target, *y_model_predictions):
     return f, p_value
 
 
-def combined_ftest_5x2cv(estimator1, estimator2, X, y, scoring=None, random_seed=None):
+def combined_ftest_5x2cv(estimator1, estimator2, X, y, scoring="accuracy", random_seed=None):
     """
     Implements the 5x2cv combined F test proposed
     by Alpaydin 1999,
@@ -167,7 +167,9 @@ def combined_ftest_5x2cv(estimator1, estimator2, X, y, scoring=None, random_seed
 
     """
     rng = np.random.RandomState(random_seed)
-
+    
+    """
+    # >>>>>>> comment out 
     if scoring is None:
         if estimator1._estimator_type == "classifier":
             scoring = "accuracy"
@@ -179,7 +181,8 @@ def combined_ftest_5x2cv(estimator1, estimator2, X, y, scoring=None, random_seed
         scorer = get_scorer(scoring)
     else:
         scorer = scoring
-
+    """
+    
     variances = []
     differences = []
 
