@@ -296,11 +296,13 @@ def paired_ttest_5x2cv(estimator1, estimator2, X, y, scoring="accuracy", random_
             scoring = "r2"
         else:
             raise AttributeError("Estimator must " "be a Classifier or Regressor.")
+    """
+    
     if isinstance(scoring, str):
         scorer = get_scorer(scoring)
     else:
         scorer = scoring
-    """
+    
     
     variance_sum = 0.0
     first_diff = None
