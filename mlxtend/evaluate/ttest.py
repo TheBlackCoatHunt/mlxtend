@@ -234,7 +234,7 @@ def paired_ttest_kfold_cv(
     return float(t_stat), float(pvalue)
 
 
-def paired_ttest_5x2cv(estimator1, estimator2, X, y, scoring=None, random_seed=None):
+def paired_ttest_5x2cv(estimator1, estimator2, X, y, scoring="accuracy", random_seed=None):
     """
     Implements the 5x2cv paired t test proposed
     by Dieterrich (1998)
@@ -287,7 +287,8 @@ def paired_ttest_5x2cv(estimator1, estimator2, X, y, scoring=None, random_seed=N
 
     """
     rng = np.random.RandomState(random_seed)
-
+    
+    """
     if scoring is None:
         if estimator1._estimator_type == "classifier":
             scoring = "accuracy"
@@ -299,7 +300,8 @@ def paired_ttest_5x2cv(estimator1, estimator2, X, y, scoring=None, random_seed=N
         scorer = get_scorer(scoring)
     else:
         scorer = scoring
-
+    """
+    
     variance_sum = 0.0
     first_diff = None
 
